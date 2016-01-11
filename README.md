@@ -7,16 +7,12 @@ angular-images-loaded
 + Can be used on different elements
 + Need not worry about asynchronous image elements insertion into DOM
 
-
-#####DEMO
-http://bimal1331.github.io/angular-images-loaded
-
 #####REQUIREMENTS
 + Angularjs 1.2+ only
 
 #####INSTALLATION
-+ Download imagesLoaded.min.js and include it with your JS files.
-+ Include module ***imagesLoaded*** in your main app module.
++ Download angular-images-loaded-directive.min.js and include it with your JS files.
++ Include module **`jtt_imagesLoaded`** in your main app module.
 
 #####USAGE
 + Put directive ***data-images-loaded*** on an element containing images.
@@ -60,50 +56,50 @@ http://bimal1331.github.io/angular-images-loaded
   That's it!
 
 #####EVENTS(Always available)
-+ ***SUCCESS*** - All images have been successfully loaded
-+ ***FAIL*** - All images have been loaded with atleast 1 failed image
-+ ***ALWAYS*** - All images are done, whether successfully loaded or failed to load. This event is always broadcasted
++ ***imagesLoaded.SUCCESS*** - All images have been successfully loaded
++ ***imagesLoaded.FAIL*** - All images have been loaded with atleast 1 failed image
++ ***imagesLoaded.ALWAYS*** - All images are done, whether successfully loaded or failed to load. This event is always broadcasted
   
   ***Subscribe to these events in your controller as shown below***
 
   ``` js
-  $scope.$on('SUCCESS', function() {
+  $scope.$on('imagesLoaded.SUCCESS', function() {
     console.log('ALL LOADED');
   });
 
-  $scope.$on('FAIL', function() {
+  $scope.$on('imagesLoaded.FAIL', function() {
     console.log('ALL LOADED WITH ATLEAST ONE FAILED');
   });
 
-   $scope.$on('ALWAYS', function() {
+   $scope.$on('imagesLoaded.ALWAYS', function() {
     console.log('ALL DONE ALWAYS');        
   });
   ```
   
 #####PROGRESS EVENTS
-+ ***QUARTER*** - One fourth of total images have been loaded/failed
-+ ***HALF*** - Half of total images have been loaded/failed
-+ ***THREEQUARTERS*** - Three fourth of total images have been loaded/failed
-+ ***FULL*** - All images have been loaded/failed
++ ***imagesLoaded.QUARTER*** - One fourth of total images have been loaded/failed
++ ***imagesLoaded.HALF*** - Half of total images have been loaded/failed
++ ***imagesLoaded.THREEQUARTERS*** - Three fourth of total images have been loaded/failed
++ ***imagesLoaded.FULL*** - All images have been loaded/failed
 
-  Main event is ***PROGRESS***, other events are received in the callback via ***progress.status***
+  Main event is ***imagesLoaded.PROGRESS***, other events are received in the callback via ***progress.status***
 
   ***Subscribe to these progress events in your controller as shown below***
 
   ``` js
-  $scope.$on('PROGRESS', function($event, progress) {
+  $scope.$on('imagesLoaded.PROGRESS', function($event, progress) {
     console.log(progress);
     switch(progress.status) {
-        case 'QUARTER':
+        case 'imagesLoaded.QUARTER':
             $scope.progress = 25;
             break;
-        case 'HALF':
+        case 'imagesLoaded.HALF':
             $scope.progress = 50;
             break;
-        case 'THREEQUARTERS':
+        case 'imagesLoaded.THREEQUARTERS':
             $scope.progress = 75;
             break;
-        case 'FULL':
+        case 'imagesLoaded.FULL':
             $scope.progress = 100;
             break;
     }
@@ -130,29 +126,23 @@ http://bimal1331.github.io/angular-images-loaded
 2)  Use ***$event.stopPropagation()*** in your controller when using progress events and nesting the directive, otherwise you'll receive same notification multiple times.
 
  ``` js
-  $scope.$on('PROGRESS', function($event, progress) {
+  $scope.$on('imagesLoaded.PROGRESS', function($event, progress) {
     console.log(progress);
     $event.stopPropagation();
     
     switch(progress.status) {
-        case 'QUARTER':
+        case 'imagesLoaded.QUARTER':
             $scope.progress = 25;
             break;
-        case 'HALF':
+        case 'imagesLoaded.HALF':
             $scope.progress = 50;
             break;
-        case 'THREEQUARTERS':
+        case 'imagesLoaded.THREEQUARTERS':
             $scope.progress = 75;
             break;
-        case 'FULL':
+        case 'imagesLoaded.FULL':
             $scope.progress = 100;
             break;
     }
   });
 ```
-
-
-#####Credits
-Ideas taken from https://github.com/desandro/imagesloaded
-
-#####Thanks for reading, Cheers!
