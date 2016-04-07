@@ -2,7 +2,7 @@
   "name": "angular-images-loaded-jtt",
   "version": "1.0.0",
   "description": "Image load detector",
-  "main": "dist/angular-images-loaded-directive.min.js",
+  "main": "dist/angular-images-loaded-directive.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

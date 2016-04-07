@@ -1,7 +1,7 @@
 {
   "name": "angular-images-loaded-jtt",
   "description": "Image load detector",
-  "main": "dist/angular-images-loaded-directive.min.js",
+  "main": "dist/angular-images-loaded-directive.js",
   "version": "1.0.0",
   "authors": [
     "Jonathan Hornung <jonathan.hornung@gmail.com>"
